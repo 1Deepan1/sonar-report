@@ -18,7 +18,7 @@ public class SonarReportService {
 	
 	public void generate(){
 		LOGGER.info("Inside generate..");
-		//client.getTarget("hello");
+		client.getTarget("hello");
 	}
 
 }

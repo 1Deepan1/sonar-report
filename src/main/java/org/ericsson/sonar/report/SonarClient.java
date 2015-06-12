@@ -10,21 +10,17 @@ import org.springframework.stereotype.Component;
 @Component
 public class SonarClient {
 
-	private static final String url = System.getProperty("sonar-report.sonar.server");
+	private String url;
 	
-	private static final Logger logger = Logger.getLogger(SonarClient.class);
-
-	private static SonarClient client = new SonarClient();
-
-	private SonarClient() {
+	public void setUrl(String url) {
+		this.url = url;
 	}
 
-	public SonarClient getSonarClient() {
-		return client;
-	}
+	private static final Logger LOGGER = Logger.getLogger(SonarClient.class);
 
 	public WebTarget getTarget(String path) {
-		Client client = ClientBuilder.newClient();		
+		LOGGER.info("Inside SonarClient..");
+		Client client = ClientBuilder.newClient();	
 		return client.target(url).path(path);
 	}
 
